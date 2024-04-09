@@ -4,23 +4,71 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>To Do List</title>
+    <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="/task_1/common.css">
 </head>
 <body>
-    <section class="area1">
+    <section>
+    <article class="area1">
         <h1>To Do List</h1>
+        <input type="text" class="inputData" placeholder=" What Will You Do?">
+        <button class="addBtn">+</button>       
+    </article>
+    <article class="area2">
+        <ul>
+            <li>
+                <span class="text">Go on a bike ride</span>
+                <button class="modifyBtn">Edit</button>
+                <button class="delBtn">Delete</button>
+                <button class="completBtn">Complete</button>
+            </li>
+        </ul>
+    </article>
     </section>
-    <section class="area2">
-        <input type="text" placeholder=" What Will You Do?">
-        <button class="button1">+</button>       
-    </section><br><br>    
-    <section class="area3">
-        Go on a bike ride&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        <button class="button2">Edit</button>
-        <button class="button2">Delete</button><br><br><br>
-        Read a book&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        <button class="button2">Edit</button>
-        <button class="button2">Delete</button>
-    </section>
+    <script>
+        let inputData = $(".inputData");
+        let addBtn = $(".addBtn");
+        let delBtn = $(".delBtn");
+        let listItem = $(".area2 ul");
+        let inputText = $(".text");
+        
+        $(document).on('click', ".modifyBtn", function(e){
+            console.log('수정 버튼');
+            $(this).parents('li').addClass('modify');
+            let thisText = $(this).parents('li').find('.text');
+            let textBefore = thisText.text();
+            thisText.html("<input type='text' class='modifyText' value='"+textBefore+"' />")
+        });
+
+        $(document).on('click', ".completBtn", function(e){
+            console.log('완료 버튼');
+            $(this).parents('li').removeClass('modify');
+            let textAfter = $(this).parents('li').find('.modifyText').val();
+            $(this).parents('li').find('span').html(textAfter);
+        });
+
+        function itemDelete () {
+            console.log('삭제 버튼');
+        }
+
+        $(document).on('click', ".delBtn", function(e){
+            let prentLi = $(this).parents('li');
+            prentLi.remove();
+        });
+
+        addBtn.on('click', function(){
+            let element = inputData.val();
+            var listFormat = 
+                '<li>' +
+                    '<span class="text">'+element+'</span>'+
+                    '<button class="modifyBtn">Edit</button>'+
+                    '<button class="delBtn">Delete</button>'+
+                    '<button class="completBtn">Complete</button>'+
+                '</li>';
+                
+            listItem.append(listFormat);
+        })
+
+    </script>
 </body>
 </html>

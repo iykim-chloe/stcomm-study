@@ -3,11 +3,14 @@ body{
     }
 .area1{
     font-size: 300%;
-    /* font-weight: bolder; */
     font-weight: 900;
     text-align: center;
 }
+
 .area2{
+    /* display: flex;
+    justify-content: center;
+    align-items: center; */
     text-align: center;
 }
 input{
@@ -23,20 +26,7 @@ input:focus{
 input:focus::placeholder{
     opacity: 0;
 }
-.area3{
-    text-decoration: underline;
-    text-decoration-thickness: 3px;
-    text-underline-offset : 8px;
-    text-align: center;
-    /* border-bottom: 2px solid #000;
-    width: 100px; */
-}
-/* .area3::after{
-    width: 100px; 
-    border-bottom: 2px solid #000000;
-    margin: 35px auto;
-} */
-.button1{
+.addBtn{
     border-radius: 50%;
     width: 30px;
     height: 30px;
@@ -44,12 +34,44 @@ input:focus::placeholder{
     color: white;
     border: 0;
 }
-.button2{
-    text-decoration: underline;
-    text-decoration-color: black;
-    text-decoration-thickness: 3px;
-    text-underline-offset : 8px;
+
+/* .modifyBtn{
+    padding: 0.5rem 1rem;
+    height: 50px;
+    outline: none;
+    border: none;
+    background-color: white;
+    width: 450px;
+    font-size: 1.15rem;
+    margin: 0.25rem;
+    border-radius: 25px;  
+}
+
+.delBtn{
+    padding: 0.5rem 1rem;
+    height: 50px;
+    outline: none;
+    border: none;
+    background-color: white;
+    width: 450px;
+    font-size: 1.15rem;
+    margin: 0.25rem;
+    border-radius: 25px;  
+} */
+
+ul,ol,li {
+    list-style: none;
+}
+
+.area2 button{
     background-color :rgba(0,0,0,0);
     color: white;
     border: 0;
 }
+.completBtn {
+    display: none;
+}
+
+.area2 ul li.modify .modifyBtn {display: none;}
+.area2 ul li.modify .completBtn {display: inline-block;}
+
